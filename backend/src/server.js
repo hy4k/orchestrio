@@ -13,10 +13,15 @@ app.use(cors());
 app.use(express.json());
 
 // DB Init
-db.exec(CREATE TABLE IF NOT EXISTS agents (
-    id TEXT PRIMARY KEY, name TEXT NOT NULL, platform TEXT, host TEXT NOT NULL,
-    status TEXT DEFAULT 'unknown', lastHeartbeat TEXT, tags TEXT
-));
+db.exec(`CREATE TABLE IF NOT EXISTS agents (
+  id TEXT PRIMARY KEY,
+  name TEXT NOT NULL,
+  platform TEXT,
+  host TEXT NOT NULL,
+  status TEXT DEFAULT 'unknown',
+  lastHeartbeat TEXT,
+  tags TEXT
+)`);
 
 // API Routes
 app.get('/api/agents', (req, res) => {
